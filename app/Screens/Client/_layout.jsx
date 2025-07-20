@@ -8,7 +8,22 @@ import { Ionicons } from '@expo/vector-icons'
 
 export default function Layout() {
   return (
-    <Tabs.Navigator screenOptions={{ headerShown: false }}>
+    <Tabs.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarActiveTintColor: '#008039', // Active color
+        tabBarInactiveTintColor: 'gray', // Inactive color
+        tabBarIcon: ({ color, size }) => {
+          let iconName
+          if (route.name === 'Home') {
+            iconName = 'home-outline'
+          } else if (route.name === 'About') {
+            iconName = 'information-circle-outline'
+          }
+          return <Ionicons name={iconName} size={size} color={color} />
+        },
+      })}
+    >
       <Tabs.Screen
         name="Home"
         component={HomeScreen}
@@ -23,7 +38,7 @@ export default function Layout() {
         name="About"
         component={AboutScreen}
         options={{
-          title: 'About',
+          title: 'Verify',
           tabBarIcon: ({ color, size }) => (
             <Ionicons
               name="information-circle-outline"

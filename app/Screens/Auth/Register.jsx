@@ -7,7 +7,7 @@ import {
   SafeAreaView,
 } from 'react-native'
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -97,10 +97,12 @@ const RegisterScreen = () => {
         </View>
 
         <View className="mt-8">
-          <Text className="text-gray-600 text-center">
-            Already have an account?{' '}
-            <Text className="text-green-600 font-semibold">Sign in</Text>
-          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text className="text-gray-600 text-center">
+              Already have an account?{' '}
+              <Text className="text-green-600 font-semibold">Sign in</Text>
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

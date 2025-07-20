@@ -6,14 +6,27 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser } from '../../features/user/userSlice'
+import { selectUser } from '../../features/user/userSelector'
+import axios from '../../utils/axios'
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
+  const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleLogin = () => {
-    // Handle login logic here
-    console.log('Login pressed', { email, password })
+  const handleLogin = async () => {
+    console.log('login')
+
+    try {
+      const res = await axios.post('/auth/login', { email, password })
+      console.log(res.data.parsedUser)
+      dispatch(setUser(res.data.parsedUser))
+      navigation.navigate('ClientStack')
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
@@ -70,10 +83,12 @@ const LoginScreen = () => {
         </View>
 
         <View className="mt-8">
-          <Text className="text-gray-600 text-center">
-            Don't have an account?{' '}
-            <Text className="text-emerald-600 font-semibold">Sign up</Text>
-          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text className="text-gray-600 text-center">
+              Don't have an account?{' '}
+              <Text className="text-emerald-600 font-semibold">Sign up</Text>
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
