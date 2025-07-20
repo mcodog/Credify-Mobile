@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "boilerplate-rn",
-    "slug": "boilerplate-rn",
+    "name": "Credify",
+    "slug": "Credify",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
