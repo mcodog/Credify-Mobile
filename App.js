@@ -19,7 +19,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName="Register"
+          initialRouteName="ClientStack"
         >
           <Stack.Screen name="ClientStack" component={ClientStack} />
           <Stack.Screen name="AdminDrawer" component={AdminDrawer} />

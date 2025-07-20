@@ -33,7 +33,7 @@ export default function Layout() {
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="Contact"
         component={ContactScreen}
         options={{
@@ -52,7 +52,7 @@ export default function Layout() {
             <Ionicons name="clipboard-outline" size={size} color={color} />
           ),
         }}
-      />
+      /> */}
     </Tabs.Navigator>
   )
 }
